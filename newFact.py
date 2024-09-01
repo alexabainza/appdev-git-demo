@@ -45,6 +45,14 @@ def clicked_prime():
     except ValueError:
         prime_result.configure(text = "Can't process float or string inputs!")
 
+def display_greeting():
+    name = name_input.get().strip()
+    if name:
+        greeting_label.configure(text=f"Hello, {name}!")
+    else:
+        greeting_label.configure(text="Please enter your name.")
+
+
 #################################### GUI LAYOUT ####################################
 
 root = Tk()
@@ -70,7 +78,18 @@ factorial_result = Label(root, text="", bg='lightblue', width=40, anchor="w")
 factorial_result.grid(column=1, row=5)
 btnFactorial = Button(root, text="Find Factorial", command=clicked_factorial,)
 btnFactorial.grid(column=0, row=5, pady=(10, 0),  sticky=W, padx=(10, 0))
+# Greeting section
+name_label = Label(root, text="Enter your name:", bg='lightblue', width=15, anchor="w")
+name_label.grid(column=0, row=11)
 
+name_input = Entry(root, width=20)
+name_input.grid(column=0, row=12)
+
+greet_button = Button(root, text="Greet", command=display_greeting, width=10)
+greet_button.grid(column=0, row=13, padx=(10, 0))
+
+greeting_label = Label(root, text="", bg='lightblue', width=40, anchor="w")
+greeting_label.grid(column=1, row=11, columnspan=2)
 
 # Layout for the is prime button and result, they will be displayed beside each other
 prime_result = Label(root, text="", bg='lightblue', width=40, anchor='w')
