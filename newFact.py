@@ -27,14 +27,11 @@ def clearInput():
 def clicked_prime():
     try:
         num = int(input.get())
-        if num <= 0:
-            prime_result.configure(text="Number must be greater than 0!")
+
+        if num <= 1:
+            prime_result.configure(text=f"{num} is not prime")
         else:
-            is_prime = True
-            for i in range(2, int(sqrt(num)) + 1):
-                if num % i == 0:
-                    is_prime = False
-                    break
+            is_prime = all(num % i != 0 for i in range(2, int(sqrt(num)) + 1))
             prime_result.configure(text=f"{num} is {'prime' if is_prime else 'not prime'}")
     except ValueError:
         prime_result.configure(text = "Can't process float or string inputs!")
