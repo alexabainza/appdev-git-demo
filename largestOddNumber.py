@@ -4,4 +4,4 @@ class Solution:
       if int(num[i]) % 2:
         return num[:i + 1]
 
-    return "String is not valid"
+    return "String is not valid! Please input a new string to calculate."
